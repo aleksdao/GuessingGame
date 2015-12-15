@@ -5,17 +5,21 @@
 		<title>Guessing Game</title>
 		<meta name="viewport" content = "width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script src="jquery-1.11.3.js"></script>		
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="guessingGame.js"></script>
 </head>
 <body>
 	<div class="container">
 		<h1>Guessing Game</h1>
-		<p>Today we are going to play a game of luck and intuition. Guess a number from 1 to 100. You will have 5 tries.</p>
-		<button type="button" class="btn btn-success btn-med">Submit your Guess</button>
-		<input type="number">
-		<p>Input a number between 1 to 100, then click the Green button to submit your guess!</p>
-		<button type="button" class="btn btn-warning btn-sml">Hint</button>
+		<p>Today we are going to play a game of luck and intuition. Input a number from 1 to 100, then click the Green button to submit your guess. You will have 5 tries.</p>
+		<button type="button" id="submit" class="btn btn-success btn-med">Submit your Guess</button>
+		<input id="guess" type="number">
+		<span id="feedback">This is where we give user feedback</span>
+		<p>Need a hint? Click below!</p>
+		<button id="hint-button" type="button" class="btn btn-warning btn-sml">Hint</button>
 		<button type="button" class="btn btn-danger btn-sml">Play again</button>
+		<div id="hint">Hint: <span id="random-hint"></span></div>
 
 
 </body>
