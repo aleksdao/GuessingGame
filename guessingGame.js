@@ -7,11 +7,11 @@ $(document).ready(function() {
 
 		var totalGuesses = 4;
 		var guessesRemaining = totalGuesses;
-
+		var guesses = [];
 		/* **** Guessing Game Functions **** */
 
 		// Generate the Winning Number
-		alert(winningNumber);
+		console.log(winningNumber);
 		function generateWinningNumber(){
 			return Math.floor((Math.random() * 100) + 1);
 			 // add code here
@@ -49,9 +49,12 @@ $(document).ready(function() {
 
 		function checkGuess(){
 			if(guessesRemaining >= 0) {
-				var guesses = [];
 				if (playersGuess === winningNumber) {
-					$('#feedback').text('You guessed right!');
+					$('#feedback').text('You guessed right! Click Play Again to run it back :)').css('color','green');
+					gameOver();
+				}
+				else if(NaN(playersGuess) || playersGuess <= 0 || playersGuess > 100) {
+					$('feedback').text('Please input a number between 1 to 100');
 				}
 				else if (guesses.indexOf(playersGuess) >= 0) {
 					$('#feedback').text('You already guessed this number. Try another one!');
@@ -59,11 +62,12 @@ $(document).ready(function() {
 				else {
 					guessesRemaining--;
 					if (guessesRemaining === 0) {
-						$('#feedback').text('You are out of guesses! Press Play Again to try another time!');
+						$('#feedback').text('You are out of guesses! Click Play Again to try another time!');
+						gameOver();
 					}
 					else {
 						guesses.push(playersGuess);
-						$('#feedback').text(guessMessage());
+						$('#feedback').text(guessMessage()).css('color','red');
 					}
 				}
 			}
@@ -71,6 +75,11 @@ $(document).ready(function() {
 				$('#feedback').text('Press Play Again to start over!');
 			}
 			// add code here
+		}
+
+		function gameOver() {
+			$('#submit').prop('disabled', true);
+			$('#hint-button').prop('disabled', true);
 		}
 
 		function guessMessage() {
@@ -90,7 +99,7 @@ $(document).ready(function() {
 				guessesRemaining++;
 				hint = "I won't give you another hint, but I'll give you one more guess. Guesses remaining now: " + guessesRemaining;
 			}
-			return hint;
+			$('#random-hint').text(hint);;
 		}
 
 		// Allow the "Player" to Play Again
@@ -98,17 +107,20 @@ $(document).ready(function() {
 		function playAgain(){
 			winningNumber = generateWinningNumber(); // add code here
 			guessesRemaining = totalGuesses;
+			$('#feedback').text('');
+			$('#random-hint').text('');
+			$('#submit').prop('disabled', false);
+			$('#hint-button').prop('disabled', false);
 		}
 
-		$('#submit').on('click', function() {
-			playersGuessSubmission();
+		$('#submit').on('click', playersGuessSubmission;
+		$('#guess').keyup(function(e) {
+			if(e.keyCode === 13) {
+				playersGuessSubmission();
+			}
 		});
-		$('#hint-button').on('click', function() {
-			$('#random-hint').text(provideHint());
-		});
-		$('#play-again').on('click', function() {
-			playAgain();
-		});
+		$('#hint-button').on('click', provideHint);
+		$('#play-again').on('click', playAgain);
 	})();
 });
 /* **** Event Listeners/Handlers ****  */
