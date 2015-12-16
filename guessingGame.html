@@ -10,17 +10,22 @@
 		<script src="guessingGame.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="container-fluid">
 		<h1>Guessing Game</h1>
 		<p>Today we are going to play a game of luck and intuition. Input a number from 1 to 100, then click the Green button to submit your guess. You will have 4 tries.</p>
 		<button type="button" id="submit" class="btn btn-success btn-med">Submit your Guess</button>
 		<input id="guess" type="number">
-		<span id="feedback">This is where we give user feedback</span>
+		<span id="feedback">After each guess, you'll get some feedback here.</span>
 		<p>Need a hint? Click below!</p>
 		<button id="hint-button" type="button" class="btn btn-warning btn-sml">Hint</button>
 		<button type="button" id="play-again" class="btn btn-danger btn-sml">Play again</button>
 		<div id="hint">Hint: <span id="random-hint"></span></div>
-
+		<div class="winning-gif hide">
+			<iframe src="http://giphy.com/embed/rypyVNU547qrC?html5=true" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/reaction-winning-rypyVNU547qrC">via GIPHY</a></p>
+		</div>
+		<div class="losing-gif hide">
+			<iframe src="http://giphy.com/embed/SIPIe590rx6iA?html5=true" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/foxadhd-love-game-over-video-games-SIPIe590rx6iA">via GIPHY</a></p>
+		</div>
 
 </body>
 </html>
