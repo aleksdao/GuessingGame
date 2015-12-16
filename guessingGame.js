@@ -36,8 +36,15 @@ $(document).ready(function() {
 			else {
 				messageContents.compare = "lower";
 			}
-			if (Math.abs(diff) > 10) {
+			if (Math.abs(diff) > 20) {
+				messageContents.range = "more than 20 digits away from";
+			}
+			else if (Math.abs(diff) > 10 ) {
 				messageContents.range = "more than 10 digits away from";
+
+			}
+			else if (Math.abs(diff) < 5) {
+				messageContents.range = "within 5 of";
 			}
 			else if (Math.abs(diff) < 10) {
 				messageContents.range = "within 10 of";
