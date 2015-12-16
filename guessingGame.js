@@ -51,9 +51,10 @@ $(document).ready(function() {
 			if(guessesRemaining >= 0) {
 				if (playersGuess === winningNumber) {
 					$('#feedback').text('You guessed right! Click Play Again to run it back :)').css('color','green');
+					$('#hint').append($('.winning-gif').removeClass('hide')).slideDown('slow');
 					gameOver();
 				}
-				else if(NaN(playersGuess) || playersGuess <= 0 || playersGuess > 100) {
+				else if(playersGuess <= 0 || playersGuess > 100) {
 					$('feedback').text('Please input a number between 1 to 100');
 				}
 				else if (guesses.indexOf(playersGuess) >= 0) {
@@ -63,6 +64,7 @@ $(document).ready(function() {
 					guessesRemaining--;
 					if (guessesRemaining === 0) {
 						$('#feedback').text('You are out of guesses! Click Play Again to try another time!');
+						$('#hint').append($('.losing-gif').removeClass('hide')).slideDown('slow');
 						gameOver();
 					}
 					else {
@@ -107,13 +109,13 @@ $(document).ready(function() {
 		function playAgain(){
 			winningNumber = generateWinningNumber(); // add code here
 			guessesRemaining = totalGuesses;
-			$('#feedback').text('');
+			$('#feedback').text('After each guess, you\'ll get some feedback here.');
 			$('#random-hint').text('');
 			$('#submit').prop('disabled', false);
 			$('#hint-button').prop('disabled', false);
 		}
 
-		$('#submit').on('click', playersGuessSubmission;
+		$('#submit').on('click', playersGuessSubmission);
 		$('#guess').keyup(function(e) {
 			if(e.keyCode === 13) {
 				playersGuessSubmission();
